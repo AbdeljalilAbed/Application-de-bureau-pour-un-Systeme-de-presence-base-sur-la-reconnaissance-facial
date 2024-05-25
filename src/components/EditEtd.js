@@ -32,12 +32,12 @@ const EditEtd = ({ Etudiant, onClose, onUpdate }) => {
     fetchEmbeddings();
   }, [Etudiant.MatriculeEtd]);
 
+  const handleFileChange = (event) => {
+    setSelectedFiles(Array.from(event.target.files));
+  };
+
   const handleChange = (e) => {
-    if (e.target.name === "image") {
-      setSelectedFiles(Array.from(e.target.files));
-    } else {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
-    }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -52,25 +52,25 @@ const EditEtd = ({ Etudiant, onClose, onUpdate }) => {
     } catch (error) {
       console.error("Error updating Etudiant:", error);
     }
-
-    if (selectedFiles.length > 0) {
+  };
+  const handleSubmitFile = async (e) => {
+    e.preventDefault();
+    try {
       const Data = new FormData();
       selectedFiles.forEach((file) => {
         Data.append("images", file);
       });
 
-      try {
-        const response = await axios.post(backendURL + "/images-upload", Data, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-        console.log("Upload successful:", response.data);
-        alert("Data uploaded successfully");
-      } catch (error) {
-        console.error("Upload failed:", error);
-        alert("Failed to upload data");
-      }
+      const response = await axios.post(backendURL + "/images-upload", Data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log("Upload successful:", response.data);
+      alert("Data uploaded successfully");
+    } catch (error) {
+      console.error("Upload failed:", error);
+      alert("Failed to upload data");
     }
   };
 
@@ -177,19 +177,25 @@ const EditEtd = ({ Etudiant, onClose, onUpdate }) => {
           <input
             type="file"
             className="form-control"
-            name="image"
-            id="file"
             multiple
-            onChange={handleChange}
+            onChange={handleFileChange}
             disabled={hasEmbedding}
           />
+          <button
+            type="button"
+            className="btn btn-secondary m-2"
+            onClick={handleSubmitFile}
+          >
+            Ajouter image
+          </button>
+
           {hasEmbedding && (
             <button
               type="button"
-              className="btn btn-danger mt-2"
+              className="btn btn-danger m-2"
               onClick={handleDeleteEmbedding}
             >
-              Supprimer l'image
+              Supprimer image
             </button>
           )}
         </div>

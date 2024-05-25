@@ -70,7 +70,7 @@ if __name__ == "__main__":
     debug_log(f"Found {len(images)} image files")
 
     etudiants_data = read_data_from_json(ETUDIANTS_JSON_PATH)
-    debug_log(f"Loaded etudiants data from {ETUDIANTS_JSON_PATH}")
+    debug_log(f"Loaded etudiants data from {ETUDIANTS_JSON_PATH}{etudiants_data }")
 
     matricules_etudiants = [etudiant["MatriculeEtd"] for etudiant in etudiants_data]
 

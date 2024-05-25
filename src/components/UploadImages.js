@@ -34,7 +34,7 @@ function UploadImages() {
   };
 
   return (
-    <div className="col bg-body rounded p-2">
+    <div className="col bg-body rounded text-center p-2">
       {" "}
       <div className="border border-primary border-3 rounded p-2">
         <div className="login-header">Upload Images Etudiants</div>

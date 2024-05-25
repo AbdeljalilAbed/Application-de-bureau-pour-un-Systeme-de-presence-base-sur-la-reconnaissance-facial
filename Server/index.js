@@ -3,7 +3,6 @@ const cors = require("cors");
 
 const multer = require("multer");
 const xlsx = require("xlsx");
-//const process = require("process");
 
 const fs = require("fs");
 const path = require("path");
@@ -155,7 +154,7 @@ app.get("/getEtds", async (req, res) => {
 app.get("/getEtudiants", async (req, res) => {
   const { palier, specialite, section, groupe, matricule } = req.query;
 
-  let etudiants = null;
+  let etudiants = [];
   try {
     const etudiantsData = readDataFromFile(etudiantsFilePath);
 

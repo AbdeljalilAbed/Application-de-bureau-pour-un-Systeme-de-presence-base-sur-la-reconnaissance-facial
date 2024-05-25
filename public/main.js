@@ -1,6 +1,6 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
-//require("../Server/index");
+require("../Server/index");
 let mainWindow;
 let backendProcess;
 
@@ -15,7 +15,7 @@ function createWindow() {
     },
   });
   mainWindow.loadURL(
-    true
+    false
       ? "http://localhost:3000#/"
       : `file://${path.resolve(
           path.join(__dirname, "..", "build", "index.html#/")
