@@ -29,3 +29,6 @@ uploads/070976165c998735a343e4fe24ed8423
 /uploads
 yarn.lock
 package-lock.json
+/Server/build
+/executables
+/Server

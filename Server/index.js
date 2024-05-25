@@ -70,7 +70,7 @@ const imageUpload = multer({ storage: storage });
 
 app.post("/images-upload", imageUpload.array("images"), (req, res) => {
   let SCRIPT_PATH = convertToDoubleBackslashes(
-    path.join(__dirname, "arrayFromImages2.py")
+    path.join(__dirname, "dist", "arrayFromImages2.exe")
   );
   let IMAGES_PATH = convertToDoubleBackslashes(imageUploadPath);
   let EMBEDDINGS_JSON_PATH = convertToDoubleBackslashes(
@@ -87,8 +87,7 @@ app.post("/images-upload", imageUpload.array("images"), (req, res) => {
   );
   var dataToSend;
   // spawn new child process to call the python script
-  const python = spawn("python", [
-    SCRIPT_PATH,
+  const python = spawn(SCRIPT_PATH, [
     IMAGES_PATH,
     EMBEDDINGS_JSON_PATH,
     ETUDIANTS_JSON_PATH,
@@ -803,7 +802,7 @@ app.post("/edt-upload", upload.single("file"), (req, res) => {
   const section = req.body.section;
 
   let SCRIPT_PATH = convertToDoubleBackslashes(
-    path.join(__dirname, "ExcelToEdt2.py")
+    path.join(__dirname, "dist", "ExcelToEdt2.exe")
   );
 
   var dataToSend;
@@ -811,8 +810,7 @@ app.post("/edt-upload", upload.single("file"), (req, res) => {
   console.log(req.file.path);
 
   // Spawn a new child process to call the Python script
-  const python = spawn("python", [
-    SCRIPT_PATH,
+  const python = spawn(SCRIPT_PATH, [
     req.file.path,
     section,
     palier,
