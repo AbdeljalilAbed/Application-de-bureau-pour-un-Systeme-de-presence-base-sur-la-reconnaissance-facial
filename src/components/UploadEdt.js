@@ -34,7 +34,7 @@ function UploadEdt() {
 
   return (
     <div className="border border-primary border-3 rounded p-3">
-      <div className="login-header">Upload EDT</div>
+      <div className="login-header">Ajouter Emploi Du Temps</div>
       <form>
         <input
           value={palier}
@@ -67,7 +67,7 @@ function UploadEdt() {
           onChange={handleFileChange}
         />
         <button className="login-button" type="submit" onClick={handleUpload}>
-          Upload
+          Ajouter
         </button>
       </form>
     </div>

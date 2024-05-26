@@ -21,7 +21,7 @@ function UploadEdt() {
 
   return (
     <div className="border border-primary border-3 rounded p-3">
-      <div className="login-header">Supprimer EDT</div>
+      <div className="login-header">Supprimer Emploi Du Temps</div>
       <form>
         <input
           value={palier}
