@@ -28,7 +28,8 @@ function UploadForm() {
 
   return (
     <div className="border border-primary border-3 rounded p-3 mt-5">
-      <div className="login-header">Upload Etudiants</div>
+      <div className="login-header">Ajouter Liste Etudiants</div>
+      <p>Le fichier doit etre en excel sous form d'un tableau sans en-tete</p>
       <form>
         <input
           placeholder="Matricule"
@@ -38,7 +39,7 @@ function UploadForm() {
           onChange={handleFileChange}
         />
         <button className="login-button" type="submit" onClick={handleUpload}>
-          Upload
+          Ajouter
         </button>
       </form>
     </div>

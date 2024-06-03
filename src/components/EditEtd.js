@@ -91,8 +91,7 @@ const EditEtd = ({ Etudiant, onClose, onUpdate }) => {
     <div className="col border border-primary border-3 rounded p-3 m-2">
       <h5 className="text-center">Modifier Etudiant</h5>
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label className="form-label">Matricule</label>
+        <div className="input-group mb-3">
           <input
             type="text"
             className="form-control"
@@ -101,9 +100,6 @@ const EditEtd = ({ Etudiant, onClose, onUpdate }) => {
             onChange={handleChange}
             readOnly
           />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Nom</label>
           <input
             type="text"
             className="form-control"
@@ -111,9 +107,6 @@ const EditEtd = ({ Etudiant, onClose, onUpdate }) => {
             value={formData.nom}
             onChange={handleChange}
           />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Prénom</label>
           <input
             type="text"
             className="form-control"
@@ -122,8 +115,7 @@ const EditEtd = ({ Etudiant, onClose, onUpdate }) => {
             onChange={handleChange}
           />
         </div>
-        <div className="mb-3">
-          <label className="form-label">Palier</label>
+        <div className="input-group mb-3">
           <input
             type="text"
             className="form-control"
@@ -131,9 +123,6 @@ const EditEtd = ({ Etudiant, onClose, onUpdate }) => {
             value={formData.palier}
             onChange={handleChange}
           />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Spécialité</label>
           <input
             type="text"
             className="form-control"
@@ -141,9 +130,6 @@ const EditEtd = ({ Etudiant, onClose, onUpdate }) => {
             value={formData.specialite}
             onChange={handleChange}
           />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Section</label>
           <input
             type="text"
             className="form-control"
@@ -152,8 +138,7 @@ const EditEtd = ({ Etudiant, onClose, onUpdate }) => {
             onChange={handleChange}
           />
         </div>
-        <div className="mb-3">
-          <label className="form-label">Groupe</label>
+        <div className="input-group mb-3">
           <input
             type="text"
             className="form-control"
@@ -161,9 +146,6 @@ const EditEtd = ({ Etudiant, onClose, onUpdate }) => {
             value={formData.groupe}
             onChange={handleChange}
           />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Etat</label>
           <input
             type="text"
             className="form-control"
@@ -172,33 +154,31 @@ const EditEtd = ({ Etudiant, onClose, onUpdate }) => {
             onChange={handleChange}
           />
         </div>
-        <div className="mb-3">
-          <label className="form-label">Image de Référence</label>
-          <input
-            type="file"
-            className="form-control"
-            multiple
-            onChange={handleFileChange}
-            disabled={hasEmbedding}
-          />
+        <input
+          type="file"
+          className="form-control"
+          multiple
+          onChange={handleFileChange}
+          disabled={hasEmbedding}
+        />
+        <button
+          type="button"
+          className="btn btn-secondary m-2"
+          onClick={handleSubmitFile}
+        >
+          Ajouter image
+        </button>
+
+        {hasEmbedding && (
           <button
             type="button"
-            className="btn btn-secondary m-2"
-            onClick={handleSubmitFile}
+            className="btn btn-danger m-2"
+            onClick={handleDeleteEmbedding}
           >
-            Ajouter image
+            Supprimer image
           </button>
-
-          {hasEmbedding && (
-            <button
-              type="button"
-              className="btn btn-danger m-2"
-              onClick={handleDeleteEmbedding}
-            >
-              Supprimer image
-            </button>
-          )}
-        </div>
+        )}
+        <div className="mb-3"></div>
         <div className="row text-center">
           <div className="col">
             <button type="submit" className="btn btn-primary m-2">

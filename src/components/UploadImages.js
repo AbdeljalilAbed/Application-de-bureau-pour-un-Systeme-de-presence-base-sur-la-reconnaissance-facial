@@ -37,7 +37,7 @@ function UploadImages() {
     <div className="col bg-body rounded text-center p-2">
       {" "}
       <div className="border border-primary border-3 rounded p-2">
-        <div className="login-header">Upload Images Etudiants</div>
+        <div className="login-header">Ajouter Images Etudiants</div>
         <form>
           <input type="file" multiple onChange={handleFileChange} />
           <br></br>
@@ -46,7 +46,7 @@ function UploadImages() {
             className="btn btn-primary m-3"
             type="submit"
           >
-            Upload
+            Ajouter
           </button>{" "}
         </form>
       </div>

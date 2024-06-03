@@ -5,7 +5,7 @@ import UploadEdt from "./UploadEdt";
 import RemoveEdt from "./RemoveEdt";
 import AddEdt from "./AddEdt";
 import EditEdt from "./EditEdt";
-import getJourEtHoraire from "../utils";
+import getJourEtHoraire from "../getJourEtHoraire";
 
 import { backendURL } from "../config";
 import axios from "axios";

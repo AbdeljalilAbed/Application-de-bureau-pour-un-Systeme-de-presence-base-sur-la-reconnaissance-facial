@@ -1,21 +1,34 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { backendURL } from "../config";
+import getIdCreneau from "../getIdCreneau";
 import "./Register.css";
 
 const AddEtd = () => {
   const [palier, setPalier] = useState("");
   const [specialite, setSpecialite] = useState("");
   const [section, setSection] = useState("");
-  const [IdCreneau, setIdCreneau] = useState("");
+  const [jour, setJour] = useState("");
+  const [horaire, setHoraire] = useState("");
   const [groupe, setGroupe] = useState("");
   const [salle, setSalle] = useState("");
   const [module, setModule] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const jours = ["Samedi", "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi"];
+  const horaires = [
+    "08:00 - 09:30",
+    "09:40 - 11:10",
+    "11:20 - 12:50",
+    "13:00 - 14:30",
+    "14:40 - 16:10",
+    "16:20 - 17:50",
+  ];
+
   const handleAddEtd = async (e) => {
     e.preventDefault();
+    const IdCreneau = getIdCreneau(jour, horaire);
     try {
       const response = await axios.post(backendURL + "/addEdt", {
         palier,
@@ -89,14 +102,36 @@ const AddEtd = () => {
           />
         </div>
         <div className="input-group mb-3">
-          <input
-            value={IdCreneau}
-            onChange={(e) => setIdCreneau(e.target.value)}
-            placeholder="IdCreneau"
-            type="text"
+          <select
+            value={jour}
+            onChange={(e) => setJour(e.target.value)}
             className="form-control"
-            id="IdCreaneau"
-          />
+            id="Jour"
+          >
+            <option value="" disabled>
+              Sélectionner le jour
+            </option>
+            {jours.map((j) => (
+              <option key={j} value={j}>
+                {j}
+              </option>
+            ))}
+          </select>
+          <select
+            value={horaire}
+            onChange={(e) => setHoraire(e.target.value)}
+            className="form-control"
+            id="Horaire"
+          >
+            <option value="" disabled>
+              Sélectionner l'horaire
+            </option>
+            {horaires.map((h) => (
+              <option key={h} value={h}>
+                {h}
+              </option>
+            ))}
+          </select>
           <input
             value={groupe}
             onChange={(e) => setGroupe(e.target.value)}
